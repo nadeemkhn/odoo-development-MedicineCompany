@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="medicine_seq" model="ir.sequence">
+        <field name="name">Medicine ID</field>
+        <field name="code">medical.medicine</field>
+        <field name="prefix">M</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+</odoo>

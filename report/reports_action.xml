@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <report
+                id="report_sale_order"
+                model="medical.sale.order"
+                string="Sale Order Report"
+                report_type="qweb-pdf"
+                name="My_company.report_sale_order_template"
+                file="My_company.report_sale_order_template"
+        />
+
+        <report
+                id="report_purchase_template_id"
+                model="medical.purchase.order"
+                report_type="qweb-pdf"
+                string="Purchase Order Reports"
+                name="My_company.report_purchase_order_template"
+                file="My_company.report_purchase_order_template"
+        />
+
+
+        <report
+                id="report_medicine_template_id"
+                model="medical.medicine"
+                report_type="qweb-pdf"
+                string="Medicine Reports"
+                name="My_company.report_medicine_order_template"
+                file="My_company.report_medicine_order_template"
+        />
+
+
+
+    </data>
+</odoo>

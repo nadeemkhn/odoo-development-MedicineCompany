@@ -1,0 +1,42 @@
+<odoo>
+    <record id="view_supplier_form" model="ir.ui.view">
+        <field name="name">medical.supplier.form</field>
+        <field name="model">medical.supplier</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="contact_info"/>
+                        <field name="address"/>
+                        <field name="created_at"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="supply_view_tree" model="ir.ui.view">
+        <field name="name">supply_view_tree</field>
+        <field name="model">medical.supplier</field>
+        <field name="arch" type="xml">
+            <tree string="supply_tree">
+                <field name="name"/>
+                <field name="contact_info"/>
+                <field name="address"/>
+                <field name="created_at"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="supplier_action" model="ir.actions.act_window">
+        <field name="name">Supplier view </field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">medical.supplier</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="supply_menu_medical"
+              name="Supplier"
+              parent="my_parent_menu"
+              action="supplier_action" sequence="05"/>
+</odoo>

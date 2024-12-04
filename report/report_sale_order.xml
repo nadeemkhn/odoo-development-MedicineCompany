@@ -1,0 +1,64 @@
+<odoo>
+    <template id="report_sale_order_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+
+                    <div class="page mt-5">
+                        <h3>Sale Order Report</h3>
+                        <t t-foreach="doc" t-as="recs">
+                            <p>
+                                <strong>Customer:</strong>
+                                <t t-esc="recs.customer_id.name"/>
+                                <br/>
+                                <strong>Status:</strong>
+                                <t t-esc="recs.state"/>
+                                <br/>
+                                 <strong>Sale Date:</strong>
+                                <t t-esc="recs.sale_date"/>
+                            </p>
+                        </t>
+                        <table class="table table-sm mt-5">
+                            <thead>
+                                <tr>
+                                    <th>Medicine</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.medicine_line_ids" t-as="rec">
+                                    <tr>
+                                        <td>
+                                            <span t-esc="rec.medicine_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="rec.quantity"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="rec.price"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="rec.subtotal"/>
+                                        </td>
+                                    </tr>
+                                </t>
+
+                            </tbody>
+                            <tr>
+                                <td colspan="3" class="text-right">
+                                    <strong>Total:</strong>
+                                </td>
+                                <td>
+                                    <span t-esc="doc.total_amount"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_medical.customer,access_medical.customer,model_medical_customer,base.group_user,1,1,1,1
+access_medical.purchase.order,access_medical.purchase.order,model_medical_purchase_order,base.group_user,1,1,1,1
+access_medical.distributor,access_medical.distributor,model_medical_distributor,base.group_user,1,1,1,1
+access_medical.medicine,access_medical.medicine,model_medical_medicine,base.group_user,1,1,1,1
+access_medical.sale.order,access_medical.medical.sale.order,model_medical_sale_order,base.group_user,1,1,1,1
+access_medical.supplier,access_medical.supplier,model_medical_supplier,base.group_user,1,1,1,1
+access_medical.purchase.order.line,access_medical.purchase.order.line,model_medical_purchase_order_line,base.group_user,1,1,1,1
+access_medical.sale.order.line,access_medical.sale.order.line,model_medical_sale_order_line,base.group_user,1,1,1,1
+
+
+

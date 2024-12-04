@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="my_parent_menu"
+                  name="Nadeem Pharmacy"
+                  web_icon="My_company,static/description/icon.png"
+                  sequence="01"/>
+
+
+    </data>
+</odoo>

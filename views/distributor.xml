@@ -1,0 +1,43 @@
+<odoo>
+    <record id="view_distributor_form" model="ir.ui.view">
+        <field name="name">medical.distributor.form</field>
+        <field name="model">medical.distributor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="contact_info"/>
+                        <field name="address"/>
+                        <field name="created_at"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="distributor_view_tree" model="ir.ui.view">
+        <field name="name">distributor_view_tree</field>
+        <field name="model">medical.distributor</field>
+        <field name="arch" type="xml">
+            <tree string="distributor_tree">
+                <field name="name"/>
+                <field name="contact_info"/>
+                <field name="address"/>
+                <field name="created_at"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="distributor_action" model="ir.actions.act_window">
+        <field name="name">Distributor view</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">medical.distributor</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="menu_item_distributor"
+              name="Distributor"
+              action="distributor_action" parent="my_parent_menu" sequence="02"/>
+</odoo>

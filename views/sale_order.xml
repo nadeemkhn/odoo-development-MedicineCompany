@@ -1,0 +1,90 @@
+<odoo>
+    <record id="view_sale_order_form" model="ir.ui.view">
+        <field name="name">medical.sale.order.form</field>
+        <field name="model">medical.sale.order</field>
+        <field name="arch" type="xml">
+            <form string="Sale Order">
+                <header>
+                    <button name="action_done" string="Mark as a Done" class="btn-success"
+                            confirm="are you sure to done it" data-hotkey="d" type="object"/>
+                    <button name="action_draft" string="set as draft" class="btn-warning"
+                            confirm="are you sure to draft it" type="object"/>
+                    <button name="action_cancel" string="cancel" confirm="are you sure to cancel it"
+                            class="btn-danger" type="object"/>
+
+
+                    <field name="state" widget="statusbar" statusbar_visible="done,draft,cancel"/>
+
+                </header>
+
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="sequence_sale" readonly="1"/>
+                        </h1>
+                    </div>
+                    <div>
+                        <field name="priority" widget="priority"/>
+                    </div>
+                    <group>
+                        <field name="customer_id"/>
+                        <field name="sale_date"/>
+
+                    </group>
+                    <notebook>
+                        <page string="Medicines">
+                            <field name="medicine_line_ids">
+                                <tree editable="bottom" string="Medicines">
+                                    <field name="medicine_id"/>
+                                    <field name="quantity"/>
+                                    <field name="price" readonly="1"/>
+                                    <field name="subtotal" readonly="1"/>
+
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <group>
+                        <field name="total_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_sale_order_tree" model="ir.ui.view">
+        <field name="name">medical.sale.order.tree</field>
+        <field name="model">medical.sale.order</field>
+        <field name="arch" type="xml">
+            <tree string="Sale Orders"
+                  multi_edit="1">
+                <field name="sequence_sale"/>
+                <field name="priority"/>
+                <field name="customer_id"/>
+                <field name="sale_date"/>
+                <field name="total_amount"/>
+                <field name="state"
+                       widget="badge" decoration-danger="state == 'cancel' "
+                       decoration-success="state == 'done' "
+                       decoration-info="state == 'draft' "
+                />
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_medical_sale_order" model="ir.actions.act_window">
+        <field name="name">Sale Orders</field>
+        <field name="res_model">medical.sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create your first Sale Order
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_medical_sale_order" name="Sale Orders"
+              parent="my_parent_menu" action="action_medical_sale_order" sequence="6"/>
+</odoo>
