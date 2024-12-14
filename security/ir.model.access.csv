@@ -7,6 +7,9 @@ access_medical.sale.order,access_medical.medical.sale.order,model_medical_sale_o
 access_medical.supplier,access_medical.supplier,model_medical_supplier,base.group_user,1,1,1,1
 access_medical.purchase.order.line,access_medical.purchase.order.line,model_medical_purchase_order_line,base.group_user,1,1,1,1
 access_medical.sale.order.line,access_medical.sale.order.line,model_medical_sale_order_line,base.group_user,1,1,1,1
+access_stock.delivery,access_stock.delivery,model_stock_delivery,base.group_user,1,1,1,1
+access_stock.delivery.line,access_stock.delivery.line,model_stock_delivery_line,base.group_user,1,1,1,1
+
 
 
 

@@ -5,19 +5,32 @@
         <field name="arch" type="xml">
             <form string="Sale Order">
                 <header>
-                    <button name="action_done" string="Mark as a Done" class="btn-success"
-                            confirm="are you sure to done it" data-hotkey="d" type="object"/>
-                    <button name="action_draft" string="set as draft" class="btn-warning"
-                            confirm="are you sure to draft it" type="object"/>
-                    <button name="action_cancel" string="cancel" confirm="are you sure to cancel it"
-                            class="btn-danger" type="object"/>
+                    <button name="action_draft" string="Set to Quotation" type="object" class="btn-success"
+                            attrs="{'invisible': [('state', 'not in', ('cancel','sent'))]}"/>
+                    <button name="action_sent" string="send by Email" type="object" class="btn-primary"
+                            attrs="{'invisible': [('state', 'not in', ('draft', 'sale'))]}"/>
+                    <button name="action_cancel" string="Cancel" type="object" class="btn-danger"
+                            attrs="{'invisible': [('state', '!=', 'sale')]}"/>
 
+                    <button name="acton_done" string="Done" type="object" class="btn-primary"
+                            attrs="{'invisible': [('state', '!=', '')]}"/>
+                    <button name="action_sale" string="Confirm" type="object" class="btn-success"
+                            attrs="{'invisible': [('state', '!=', 'draft',)]}"/>
 
-                    <field name="state" widget="statusbar" statusbar_visible="done,draft,cancel"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,sent,sale"/>
 
                 </header>
 
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_delivery" type="object" class="oe_stat_button btn-success"
+                                icon="fa-truck" states="sale"
+                                style="display: block; margin-left: auto; margin-right: auto;">
+                            <field name="delivery_count" widget="statinfo" string="Delivery"/>
+                        </button>
+
+                    </div>
+
                     <div class="oe_title">
                         <h1>
                             <field name="sequence_sale" readonly="1"/>
@@ -37,8 +50,6 @@
                                 <tree editable="bottom" string="Medicines">
                                     <field name="medicine_id"/>
                                     <field name="quantity"/>
-                                    <field name="price" readonly="1"/>
-                                    <field name="subtotal" readonly="1"/>
 
                                 </tree>
                             </field>
@@ -56,17 +67,23 @@
         <field name="name">medical.sale.order.tree</field>
         <field name="model">medical.sale.order</field>
         <field name="arch" type="xml">
-            <tree string="Sale Orders"
+            <tree decoration-danger="state == 'cancel' "
+                  decoration-success="state == 'sale' "
+                  decoration-info="state == 'draft' "
+                  decoration-primary="state == 'sent' "
+                  string="Sale Orders"
                   multi_edit="1">
                 <field name="sequence_sale"/>
                 <field name="priority"/>
+                <field name="delivery_id"/>
                 <field name="customer_id"/>
                 <field name="sale_date"/>
                 <field name="total_amount"/>
                 <field name="state"
                        widget="badge" decoration-danger="state == 'cancel' "
-                       decoration-success="state == 'done' "
+                       decoration-success="state == 'sale' "
                        decoration-info="state == 'draft' "
+                       decoration-primary="state == 'sent' "
                 />
 
 

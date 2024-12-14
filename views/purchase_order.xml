@@ -7,17 +7,30 @@
             <form string="Purchase Order">
                 <header>
                     <button name="action_done" string="Mark as a Done" class="btn-success"
-                            confirm="are you sure to done it" data-hotkey="d" type="object"/>
+                            confirm="are you sure to done it" data-hotkey="d" type="object"
+                            attrs="{'invisible': [('state', '!=', '')]}"/>
                     <button name="action_draft" string="set as draft" class="btn-warning"
-                            confirm="are you sure to draft it" type="object"/>
+                            confirm="are you sure to draft it" type="object"
+                            attrs="{'invisible': [('state', 'not in', ('cancel','done'))]}"/>
                     <button name="action_cancel" string="cancel" confirm="are you sure to cancel it"
-                            class="btn-danger" type="object"/>
+                            class="btn-danger" type="object"
+                            attrs="{'invisible': [('state', '!=', 'confirm')]}"/>
+                    <button name="action_confirm" string="Confirm "
+                            class="btn-primary" type="object" attrs="{'invisible': [('state', '!=', 'draft',)]}"/>
 
 
-                    <field name="state" widget="statusbar" statusbar_visible="done,draft,cancel"/>
+                    <field name="state" widget="statusbar" statusbar_visible="done,draft,confirm"/>
 
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_delivery" type="object" class="oe_stat_button  "
+                                icon="fa-truck"
+                                states="confirm">
+                            <field name="delivery_count" widget="statinfo" string="Receipt"/>
+
+                        </button>
+                    </div>
                     <div class="oe_title">
                         <h1>
                             <field name="sequence_purchase" readonly="1"/>
@@ -56,17 +69,25 @@
         <field name="name">medical.purchase.order.tree</field>
         <field name="model">medical.purchase.order</field>
         <field name="arch" type="xml">
-            <tree string="Purchase Orders">
+            <tree decoration-danger="state == 'cancel' "
+                  decoration-success="state == 'confirm' "
+                  decoration-info="state == 'draft' "
+                  decoration-primary="state == 'done' "
+
+                  string="Purchase Orders">
                 <field name="sequence_purchase"/>
                 <field name="priority"/>
+                <field name="delivery_id"/>
                 <field name="supplier_id"/>
                 <field name="purchase_date"/>
                 <field name="total_amount"/>
                 <field name="state"
                        widget="badge"
                        decoration-danger="state == 'cancel' "
-                       decoration-success="state == 'done' "
+                       decoration-success="state == 'confirm' "
                        decoration-info="state == 'draft' "
+                       decoration-primary="state == 'done' "
+
                 />
             </tree>
         </field>

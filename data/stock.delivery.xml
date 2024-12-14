@@ -1,0 +1,19 @@
+<odoo>
+    <data noupdate="1">
+        <record id="seq_stock_delivery_purchase" model="ir.sequence">
+            <field name="name">Stock Delivery Purchase</field>
+            <field name="code">stock.delivery.purchase</field>
+            <field name="prefix">WH/IN/PO</field>
+            <field name="padding">4</field>
+
+        </record>
+
+        <record id="seq_stock_delivery_sale" model="ir.sequence">
+            <field name="name">Stock Delivery Sale</field>
+            <field name="code">stock.delivery.sale</field>
+            <field name="prefix">WH/OUT/SO</field>
+            <field name="padding">4</field>
+
+        </record>
+    </data>
+</odoo>

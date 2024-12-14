@@ -30,27 +30,27 @@
                             <tbody>
                                 <t t-foreach="doc.medicine_line_ids" t-as="rec">
                                     <tr>
-                                        <td>
-                                            <span t-esc="rec.medicine_id.name"/>
+                                        <td class="text-center" >
+                                            <span  t-esc="rec.medicine_id.name"/>
                                         </td>
-                                        <td>
+                                        <td class="text-center" >
                                             <span t-esc="rec.quantity"/>
                                         </td>
-                                        <td>
-                                            <span t-esc="rec.price"/>
+                                        <td class="text-center" >
+                                            <span  t-esc="rec.price"/>
                                         </td>
-                                        <td>
-                                            <span t-esc="rec.subtotal"/>
+                                        <td class="text-center" >
+                                            <span  t-esc="rec.subtotal"/>
                                         </td>
                                     </tr>
                                 </t>
 
                             </tbody>
                             <tr>
-                                <td colspan="3" class="text-right">
+                                <td colspan="3" class="text-right" style="padding-left:14px;">
                                     <strong>Total:</strong>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <span t-esc="doc.total_amount"/>
                                 </td>
                             </tr>

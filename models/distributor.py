@@ -8,3 +8,4 @@ class Distributor(models.Model):
     contact_info = fields.Char('Contact Information')
     address = fields.Text('Address')
     created_at = fields.Datetime('Created At', default=fields.Datetime.now)
+

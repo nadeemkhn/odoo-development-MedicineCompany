@@ -1,6 +1,4 @@
-from odoo import models, fields, api, _
-from pkg_resources import require
-
+from odoo import models, fields, api,_
 
 class Medicine(models.Model):
     _name = 'medical.medicine'
@@ -10,7 +8,7 @@ class Medicine(models.Model):
     description = fields.Text('Description')
     cost_price = fields.Float('Purchase Price')
     margin = fields.Float(string='Margin (%)', default=10.0)
-    sale_price = fields.Float(string='Sale Price', compute='_compute_sale_price', store=True)
+    sale_price = fields.Float(string='Sale Price', compute='_compute_sale_price', store=True , readonly=False)
     created_at = fields.Datetime('Created At', )
     stock = fields.Integer('Stock', default=0)
     medicine_seq = fields.Char(string='Medicine ID', required=True, copy=False,
